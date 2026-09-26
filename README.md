@@ -11,13 +11,13 @@ A JavaFX + Spring Boot space exploration game where players pilot a ship through
 | UI / Rendering | JavaFX 21 (Canvas + AnimationTimer) |
 | Build | Gradle (Groovy) |
 
-## Planet Progression Order
+## Planet Accessibility Order
 
 ```
 Earth → Moon → Mars → Venus → Mercury → Jupiter → Saturn → Uranus → Neptune
 ```
 
-Each planet is locked until the player collects all resources from the previous one and upgrades their ship engine.
+You can visit the other planet, without completing any level but your ship will crash if it's engine isn't strong enough
 
 ---
 
