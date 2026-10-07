@@ -1,37 +1,36 @@
 package project.aoop.space_sandbox.entity;
+
 import org.springframework.stereotype.Component;
+import project.aoop.space_sandbox.config.PhysicsConfig;
 
 @Component
 public class Ship {
-    private double x = 0, y = 0;
-    private double vx = 0, vy = 0;
-    private double angle = 0;
-    private double radius = 0.3;
 
-    private int engineTier = 1;
-    private int health = 100;
-
-    private static final double BASE_THRUST = 2000.0;
-    private static final double ROTATE_SPEED = 1.2;
+    private double x          = PhysicsConfig.SHIP_START_X;
+    private double y          = PhysicsConfig.SHIP_START_Y;
+    private double vx         = PhysicsConfig.SHIP_START_VX;
+    private double vy         = PhysicsConfig.SHIP_START_VY;
+    private double angle      = 0;
+    private double radius     = 0.3;
+    private int    engineTier = 1;
+    private int    health     = 100;
 
     public void thrust(double deltaTime) {
-        double power = BASE_THRUST * engineTier;
+        double power = PhysicsConfig.SHIP_THRUST * engineTier;
         vx += Math.cos(angle) * power * deltaTime;
         vy += Math.sin(angle) * power * deltaTime;
     }
 
+    public void rotateLeft(double deltaTime)  { angle -= PhysicsConfig.SHIP_ROTATE_SPEED * deltaTime; }
+    public void rotateRight(double deltaTime) { angle += PhysicsConfig.SHIP_ROTATE_SPEED * deltaTime; }
+
     public void brake(double deltaTime) {
-        double braking = Math.max(0.0, 1.0 - 8.0 * deltaTime);
-        vx *= braking;
-        vy *= braking;
-    }
-
-    public void rotateLeft(double deltaTime) {
-        angle -= ROTATE_SPEED * deltaTime;
-    }
-
-    public void rotateRight(double deltaTime) {
-        angle += ROTATE_SPEED * deltaTime;
+        double speed = getSpeed();
+        if (speed < 0.001) { vx = 0; vy = 0; return; }
+        double brakeForce = PhysicsConfig.SHIP_BRAKE_FORCE * deltaTime;
+        double ratio = Math.max(0, 1.0 - brakeForce / speed);
+        vx *= ratio;
+        vy *= ratio;
     }
 
     public void update(double deltaTime) {
@@ -39,27 +38,22 @@ public class Ship {
         y += vy * deltaTime;
     }
 
-    public void crash() { health = 0; }
+    public void crash()      { health = 0; }
+    public double getSpeed() { return Math.sqrt(vx * vx + vy * vy); }
 
-    public double getSpeed() {
-        return Math.sqrt(vx * vx + vy * vy);
-    }
-
-    //getters
-    public double getX() { return x; }
-    public double getY() { return y; }
-    public double getVx() { return vx; }
-    public double getVy() { return vy; }
-    public double getAngle() { return angle; }
-    public double getRadius() { return radius; }
+    public double getX()       { return x; }
+    public double getY()       { return y; }
+    public double getVx()      { return vx; }
+    public double getVy()      { return vy; }
+    public double getAngle()   { return angle; }
+    public double getRadius()  { return radius; }
     public int getEngineTier() { return engineTier; }
-    public int getHealth() { return health; }
+    public int getHealth()     { return health; }
 
-    //setters
-    public void setX(double x) { this.x = x; }
-    public void setY(double y) { this.y = y; }
-    public void setVx(double vx) { this.vx = vx; }
-    public void setVy(double vy) { this.vy = vy; }
-    public void setEngineTier(int engineTier) { this.engineTier = engineTier; }
-    public void setHealth(int health) { this.health = health; }
+    public void setX(double x)          { this.x = x; }
+    public void setY(double y)          { this.y = y; }
+    public void setVx(double vx)        { this.vx = vx; }
+    public void setVy(double vy)        { this.vy = vy; }
+    public void setHealth(int h)        { this.health = h; }
+    public void setEngineTier(int tier) { this.engineTier = tier; }
 }

@@ -1,4 +1,111 @@
 package project.aoop.space_sandbox.config;
 
 public class PhysicsConfig {
+
+    // ── Gravity ──────────────────────────────────────────────────────────
+    public static final double G                  = 0.1;
+    public static final double ORBIT_ASSIST_RATE  = 3.0;  // was 2.0 — snaps to orbit faster
+    public static final double RADIAL_DAMPEN_RATE = 0.85; // was 0.2 — stops outward drift fast
+
+    // ── Ship ─────────────────────────────────────────────────────────────
+    public static final double SHIP_THRUST        = 5.6;
+    public static final double SHIP_ROTATE_SPEED  = 1.2;
+    public static final double SHIP_BRAKE_FORCE   = 4.3;
+    public static final double SHIP_START_X       = 75.0;   // just outside Earth's zone
+    public static final double SHIP_START_Y       = 499.0;  // Earth is at (0, 499)
+    public static final double SHIP_START_VX      = -0.3;   // drifting toward Earth
+    public static final double SHIP_START_VY      = 0.0;
+    public static final double SAFE_LAND_SPEED    = 1.5;    // below = land, above = bounce
+
+    // ── Camera ───────────────────────────────────────────────────────────
+    public static final double CAMERA_ZOOM        = 0.9;
+
+    // ── Sun ──────────────────────────────────────────────────────────────
+    public static final double SUN_MASS           = 50000;
+    public static final double SUN_RADIUS         = 25.0;
+    public static final double SUN_GRAVITY_RADIUS = 140.0;
+    public static final double SUN_X              = 0.0;
+    public static final double SUN_Y              = 0.0;
+
+    // ── Moon (orbits Earth, not Sun) ─────────────────────────────────────
+    public static final double MOON_MASS           = 25;
+    public static final double MOON_RADIUS         = 8.0;
+    public static final double MOON_ORBIT_RADIUS   = 35.0;  // distance from Earth
+    public static final double MOON_PERIOD         = 800;   // seconds per orbit around Earth
+    public static final double MOON_GRAVITY_RADIUS = 20.0;
+    public static final double MOON_START_ANGLE    = 0.8;
+
+// Remove old Moon semi-major/minor — replaced by MOON_ORBIT_RADIUS
+
+    // ── Earth ────────────────────────────────────────────────────────────
+    public static final double EARTH_MASS           = 125;
+    public static final double EARTH_RADIUS         = 20.0;
+    public static final double EARTH_SEMI_MAJOR     = 500.0;
+    public static final double EARTH_SEMI_MINOR     = 499.0;
+    public static final double EARTH_PERIOD         = 2000;
+    public static final double EARTH_GRAVITY_RADIUS = 50.0;
+    public static final double EARTH_START_ANGLE    = 1.57;  // bottom of orbit (0, 499)
+
+    // ── Mercury ──────────────────────────────────────────────────────────
+    public static final double MERCURY_MASS           = 25;
+    public static final double MERCURY_RADIUS         = 10.0;
+    public static final double MERCURY_SEMI_MAJOR     = 200.0;
+    public static final double MERCURY_SEMI_MINOR     = 196.0;
+    public static final double MERCURY_PERIOD         = 600;
+    public static final double MERCURY_GRAVITY_RADIUS = 25.0;
+    public static final double MERCURY_START_ANGLE    = 0.5;
+
+    // ── Venus ────────────────────────────────────────────────────────────
+    public static final double VENUS_MASS           = 65;
+    public static final double VENUS_RADIUS         = 18.0;
+    public static final double VENUS_SEMI_MAJOR     = 350.0;
+    public static final double VENUS_SEMI_MINOR     = 350.0;
+    public static final double VENUS_PERIOD         = 1200;
+    public static final double VENUS_GRAVITY_RADIUS = 40.0;
+    public static final double VENUS_START_ANGLE    = 2.1;
+
+    // ── Mars ─────────────────────────────────────────────────────────────
+    public static final double MARS_MASS           = 45;
+    public static final double MARS_RADIUS         = 13.0;
+    public static final double MARS_SEMI_MAJOR     = 750.0;
+    public static final double MARS_SEMI_MINOR     = 743.0;
+    public static final double MARS_PERIOD         = 3800;
+    public static final double MARS_GRAVITY_RADIUS = 35.0;
+    public static final double MARS_START_ANGLE    = 1.2;
+
+    // ── Jupiter ──────────────────────────────────────────────────────────
+    public static final double JUPITER_MASS           = 1000;
+    public static final double JUPITER_RADIUS         = 40.0;
+    public static final double JUPITER_SEMI_MAJOR     = 2000.0;
+    public static final double JUPITER_SEMI_MINOR     = 1997.0;
+    public static final double JUPITER_PERIOD         = 12000;
+    public static final double JUPITER_GRAVITY_RADIUS = 100.0;
+    public static final double JUPITER_START_ANGLE    = 3.8;
+
+    // ── Saturn ───────────────────────────────────────────────────────────
+    public static final double SATURN_MASS           = 500;
+    public static final double SATURN_RADIUS         = 32.0;
+    public static final double SATURN_SEMI_MAJOR     = 3500.0;
+    public static final double SATURN_SEMI_MINOR     = 3494.0;
+    public static final double SATURN_PERIOD         = 24000;
+    public static final double SATURN_GRAVITY_RADIUS = 80.0;
+    public static final double SATURN_START_ANGLE    = 0.5;
+
+    // ── Uranus ───────────────────────────────────────────────────────────
+    public static final double URANUS_MASS           = 350;
+    public static final double URANUS_RADIUS         = 26.0;
+    public static final double URANUS_SEMI_MAJOR     = 5000.0;
+    public static final double URANUS_SEMI_MINOR     = 4994.0;
+    public static final double URANUS_PERIOD         = 48000;
+    public static final double URANUS_GRAVITY_RADIUS = 70.0;
+    public static final double URANUS_START_ANGLE    = 2.9;
+
+    // ── Neptune ──────────────────────────────────────────────────────────
+    public static final double NEPTUNE_MASS           = 350;
+    public static final double NEPTUNE_RADIUS         = 25.0;
+    public static final double NEPTUNE_SEMI_MAJOR     = 6500.0;
+    public static final double NEPTUNE_SEMI_MINOR     = 6494.0;
+    public static final double NEPTUNE_PERIOD         = 96000;
+    public static final double NEPTUNE_GRAVITY_RADIUS = 70.0;
+    public static final double NEPTUNE_START_ANGLE    = 5.1;
 }

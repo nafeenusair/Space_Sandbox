@@ -18,11 +18,13 @@ public class InputHandler {
 
     private boolean is(KeyCode k) { return held.contains(k); }
 
-    public boolean thrustForward() { return is(KeyCode.W) || is(KeyCode.UP); }
-    public boolean rotateLeft()    { return is(KeyCode.A) || is(KeyCode.LEFT); }
+    public boolean thrustForward() { return is(KeyCode.W) || is(KeyCode.UP);    }
+    public boolean rotateLeft()    { return is(KeyCode.A) || is(KeyCode.LEFT);  }
     public boolean rotateRight()   { return is(KeyCode.D) || is(KeyCode.RIGHT); }
-    public boolean brake()         { return is(KeyCode.SPACE); }
-    public boolean shoot()         { return is(KeyCode.SPACE); }
-    public boolean zoomIn()        { return is(KeyCode.EQUALS); }
-    public boolean zoomOut()       { return is(KeyCode.MINUS); }
+    public boolean brake()         { return is(KeyCode.S) || is(KeyCode.DOWN);  }
+    public boolean shoot()         { return is(KeyCode.SPACE);                  }
+    public boolean levelUp()       { return is(KeyCode.L);                      }
+    public boolean zoomIn()        { return is(KeyCode.EQUALS);                 }
+    public boolean zoomOut()       { return is(KeyCode.MINUS);                  }
+    public boolean closeMap()      { return is(KeyCode.ESCAPE);                 }
 }

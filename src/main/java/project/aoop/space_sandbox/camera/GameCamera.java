@@ -30,7 +30,7 @@ public class GameCamera {
     }
 
     public void adjustZoom(double factor) {
-        zoom = Math.max(10, Math.min(200, zoom * factor));
+        zoom = Math.clamp(zoom * factor, 10, 200);
     }
 
     public void setScreenSize(double w, double h) { screenW = w; screenH = h; }

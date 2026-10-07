@@ -36,13 +36,13 @@ public class ShipRenderer {
         }
 
         if (shipImage != null && !shipImage.isError()) {
-            double w = 50, h = 60;
+            double w = 30, h = 36;  // was 50x60
             gc.drawImage(shipImage, -w / 2, -h / 2, w, h);
         } else {
             gc.setFill(Color.web("#aabbcc"));
             gc.beginPath();
-            gc.moveTo(18, 0); gc.lineTo(-11, -8);
-            gc.lineTo(-7, 0); gc.lineTo(-11,  8);
+            gc.moveTo(12, 0); gc.lineTo(-8, -6);  // smaller triangle too
+            gc.lineTo(-5, 0); gc.lineTo(-8,  6);
             gc.closePath();
             gc.fill();
         }
